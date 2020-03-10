@@ -1,5 +1,8 @@
 package gameminiproject;
 
+import model.gameModel;
+import view.gameView;
+
 public class gameController {
 
 	private gameView view;

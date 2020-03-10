@@ -2,6 +2,8 @@ package gameminiproject;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import model.gameModel;
+import view.gameView;
 
 public class main extends Application {
 

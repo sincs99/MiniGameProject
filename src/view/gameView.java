@@ -1,4 +1,4 @@
-package gameminiproject;
+package view;
 
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.gameModel;
 
 public class gameView {
 

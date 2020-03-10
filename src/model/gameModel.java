@@ -1,4 +1,4 @@
-package gameminiproject;
+package model;
 
 public class gameModel {
 
