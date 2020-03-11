@@ -22,6 +22,7 @@ public class gameView {
 	public gameView(Stage stage, gameModel model) {
 		this.stage = stage;
 		this.model = model;
+		
 
 		this.btnDeal = btnDeal;
 		this.btnShuffle = btnShuffle;
@@ -73,14 +74,16 @@ public class gameView {
 		root.setRight(player2);
 		root.setBottom(info);
 		
+		root.setCenter(gameGrid.createBoard());
+		
 		root.setPadding(new Insets(10, 10, 10, 10));
 		
 		//Setting Scene
 
 		Scene scene = new Scene(root, 800, 500);
-		scene.getStylesheets().add(getClass().getResource("Poker.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/resources/Poker.css").toExternalForm());
 		stage.setScene(scene);
-		stage.setTitle("Poker Mini Game");
+		stage.setTitle("4 gewinnt");
 
 	}
 

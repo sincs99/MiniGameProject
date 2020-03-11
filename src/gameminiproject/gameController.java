@@ -1,6 +1,9 @@
 package gameminiproject;
 
+import javafx.scene.shape.Shape;
 import model.gameModel;
+import player.Cpu;
+import player.Player;
 import view.gameView;
 
 public class gameController {
@@ -10,9 +13,22 @@ public class gameController {
 	
 	
 	
+	protected Player player;
+	protected Cpu cpu;
+	
+	
+	
+	//Multidimesnional Array
+	
+	//private int[][] gameBoard = new int [rowSize][colSize];
+	
+	
+	
 	public gameController(gameView view, gameModel model) {
 		this.view = view;
 		this.model = model;
 	}
+	
+	
 
 }
