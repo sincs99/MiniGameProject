@@ -81,7 +81,7 @@ public class gameView {
 		//Setting Scene
 
 		Scene scene = new Scene(root, 800, 500);
-		scene.getStylesheets().add(getClass().getResource("/resources/Poker.css").toExternalForm());
+		scene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("4 gewinnt");
 
