@@ -39,28 +39,25 @@ public class gameModel {
 	}
 
 	public static List<Rectangle> createCol() {
-		
+
 		List<Rectangle> colList = new ArrayList<>();
-		
+
 		for (int xCol = 0; xCol < colSize; xCol++) {
-			
-			Rectangle r1 = new Rectangle(view.gameGrid.DISC_SIZE, (rowSize +1)*view.gameGrid.DISC_SIZE);
-			r1.setTranslateX(xCol*(view.gameGrid.DISC_SIZE +5)+view.gameGrid.DISC_SIZE / 4);
-			
+
+			Rectangle r1 = new Rectangle(view.gameGrid.DISC_SIZE, (rowSize + 1) * view.gameGrid.DISC_SIZE);
+			r1.setTranslateX(xCol * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
+
 			r1.setFill(Color.TRANSPARENT);
-			r1.setOnMouseEntered(e-> r1.setFill(Color.rgb(200, 200, 50, 0.3)));
-			r1.setOnMouseExited(e-> r1.setFill(Color.TRANSPARENT));
-			
+			r1.setOnMouseEntered(e -> r1.setFill(Color.rgb(200, 200, 50, 0.3)));
+			r1.setOnMouseExited(e -> r1.setFill(Color.TRANSPARENT));
+
 			final int col = xCol;
-			
-			
-			/* TODO: Build Method for setDisc*/
+
+			/* TODO: Build Method for setDisc */
 			r1.setOnMouseClicked(null);
-			
+
 			colList.add(r1);
-			
-			
-			
+
 		}
 
 		return colList;

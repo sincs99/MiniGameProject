@@ -1,6 +1,7 @@
 package view;
 
 import gameminiproject.gameController;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
@@ -19,6 +20,10 @@ public class gameGrid {
 		Shape boardShape = gameModel.buildBoard();
 		gameRoot.getChildren().add(boardShape);
 		gameRoot.getChildren().addAll(gameModel.createCol());
+		
+		gameRoot.setPadding(new Insets(10, 10, 10, 10));
+		
+		gameRoot.setPrefWidth(400);
 	
 		return gameRoot;
 	}

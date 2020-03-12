@@ -68,12 +68,10 @@
     -fx-padding: 10 20 10 20;
 }
 
-@font-face {
-    src: url("/resources/PokerKings-Regular.ttf");
-}
+
 
 #playerText{
-	-fx-font-family: "PokerKings-Regular";
+	-fx-font-family: "Arial";
 	-fx-font-size: 20px;
 	-fx-text-fill:#424242;
 	
