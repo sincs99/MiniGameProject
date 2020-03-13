@@ -16,6 +16,14 @@ public class gameModel {
 
 	protected static int rowSize = 6;
 	protected static int colSize = 7;
+	
+
+	
+	
+	
+	
+	//Color for Row Hover effect
+	protected final static Color HOVER_FILL = new Color(0.5, 1.0, 1.0, 0.3);
 
 	public static Shape buildBoard() {
 
@@ -41,6 +49,7 @@ public class gameModel {
 	public static List<Rectangle> createCol() {
 
 		List<Rectangle> colList = new ArrayList<>();
+		
 
 		for (int xCol = 0; xCol < colSize; xCol++) {
 
@@ -48,7 +57,10 @@ public class gameModel {
 			r1.setTranslateX(xCol * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
 
 			r1.setFill(Color.TRANSPARENT);
-			r1.setOnMouseEntered(e -> r1.setFill(Color.rgb(200, 200, 50, 0.3)));
+			r1.setOnMouseEntered(e -> r1.setFill(HOVER_FILL));
+
+			
+
 			r1.setOnMouseExited(e -> r1.setFill(Color.TRANSPARENT));
 
 			final int col = xCol;

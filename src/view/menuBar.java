@@ -12,8 +12,8 @@ public class menuBar {
 	
 	
 	private static MenuBar menuBar;
-	private static Menu help, properties, start;
-	private static MenuItem rules, about, gameBoardSize, exit, newGame;
+	private static Menu help, properties, start, gameBoard;
+	private static MenuItem rules, about, gameBoardSize, exit, newGame, sevenSix, fourFour;
 	
 	public static Parent createMenuBar() {
 		
@@ -24,15 +24,26 @@ public class menuBar {
 		properties = new Menu("Properties");
 		start = new Menu ("File");
 		
+		
+		
 		rules = new MenuItem("Rules");
 		about = new MenuItem("About");
+		
+		about.setOnAction(e->aboutPopUp.createPopUp());
+		
 		gameBoardSize = new MenuItem("Size of GameBoard");
 		exit = new MenuItem("Exit");
 		newGame = new MenuItem("New Game");
 		
+		//Gameboard is Parent menu of sevenSix and FourFour
 		
+		gameBoard = new Menu("GameBoard");
+		sevenSix = new MenuItem("7x6");
+		fourFour = new MenuItem("4x4");
+		
+		gameBoard.getItems().addAll(sevenSix, fourFour);
 		help.getItems().addAll(rules, about);
-		properties.getItems().addAll(gameBoardSize);
+		properties.getItems().addAll(gameBoardSize, gameBoard);
 		start.getItems().addAll(newGame, exit);
 		
 		menuBar.getMenus().addAll(start, properties, help);
