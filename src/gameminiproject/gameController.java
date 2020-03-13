@@ -18,10 +18,6 @@ public class gameController {
 	
 	
 	
-	//Multidimesnional Array
-	
-	//private int[][] gameBoard = new int [rowSize][colSize];
-	
 	
 	
 	public gameController(gameView view, gameModel model) {

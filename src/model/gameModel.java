@@ -17,6 +17,8 @@ public class gameModel {
 	protected static int rowSize = 6;
 	protected static int colSize = 7;
 	
+	
+	
 
 	
 	
@@ -45,6 +47,10 @@ public class gameModel {
 		return form;
 
 	}
+	
+	
+	
+	
 
 	public static List<Rectangle> createCol() {
 
@@ -74,5 +80,39 @@ public class gameModel {
 
 		return colList;
 	}
+
+
+
+
+
+	public static int getRowSize() {
+		return rowSize;
+	}
+
+
+
+
+
+	public static void setRowSize(int rowSize) {
+		gameModel.rowSize = rowSize;
+	}
+
+
+
+
+
+	public static int getColSize() {
+		return colSize;
+	}
+
+
+
+
+
+	public static void setColSize(int colSize) {
+		gameModel.colSize = colSize;
+	}
+	
+	
 
 }

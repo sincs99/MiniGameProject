@@ -64,6 +64,7 @@ public class gameView {
 		// Setting Scene
 
 		Scene scene = new Scene(root, 900, 500);
+	
 		scene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("four in a row");
