@@ -13,6 +13,9 @@ public class gameModel {
 
 	// Gameboard Size
 	/* TODO: Change implement the function to change gameboard size */
+	
+	
+	//GameboardSize is changeable in gameController with MenuItems
 
 	protected static int rowSize = 6;
 	protected static int colSize = 7;

@@ -10,18 +10,22 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.gameModel;
 
 public class gameView {
 
 	private Stage stage;
 	private gameModel model;
+	private topMenuBar menuBar;
+	private BorderPane root;
 
 	protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
 
 	public gameView(Stage stage, gameModel model) {
 		this.stage = stage;
 		this.model = model;
+		this.menuBar = new topMenuBar();
 
 		this.lblplayer1 = lblplayer1;
 		this.lblplayer2 = lblplayer2;
@@ -30,11 +34,13 @@ public class gameView {
 
 		// Boxing
 
-		BorderPane root = new BorderPane();
+		root = new BorderPane();
 		VBox player1 = new VBox();
 		VBox player2 = new VBox();
 		HBox card1 = new HBox();
 		HBox card2 = new HBox();
+		
+		
 
 		// Labels
 
@@ -57,7 +63,7 @@ public class gameView {
 		root.setBottom(buttonView.buttonViewBuilder());
 
 		root.setCenter(gameGrid.createBoard());
-		root.setTop(menuBar.createMenuBar());
+		root.setTop(menuBar);
 
 		root.setPadding(new Insets(0, 0, 10, 0));
 
@@ -68,6 +74,8 @@ public class gameView {
 		scene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
 		stage.setScene(scene);
 		stage.setTitle("four in a row");
+		stage.setResizable(false);
+		stage.initStyle(StageStyle.UNDECORATED);
 
 	}
 
@@ -75,5 +83,19 @@ public class gameView {
 		stage.show();
 
 	}
+
+	public topMenuBar getMenuBar() {
+		return menuBar;
+	}
+
+	public BorderPane getRoot() {
+		return root;
+	}
+
+	public void setRoot(BorderPane root) {
+		this.root = root;
+	}
+	
+	
 
 }
