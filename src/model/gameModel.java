@@ -13,26 +13,22 @@ public class gameModel {
 
 	// Gameboard Size
 	/* TODO: Change implement the function to change gameboard size */
-	
-	
-	//GameboardSize is changeable in gameController with MenuItems
+	// GameboardSize is changeable in gameController with MenuItems
 
 	protected static int rowSize = 6;
 	protected static int colSize = 7;
 	
-	
-	
+	protected static Color GAME_BOARD = Color.BLUEVIOLET;
 
-	
-	
-	
-	
-	//Color for Row Hover effect
+	// Color for Row Hover effect
 	protected final static Color HOVER_FILL = new Color(0.5, 1.0, 1.0, 0.3);
 
 	public static Shape buildBoard() {
+		
+		
 
 		Shape form = new Rectangle((colSize + 1) * view.gameGrid.DISC_SIZE, (rowSize + 1) * view.gameGrid.DISC_SIZE);
+		
 
 		for (int yAxle = 0; yAxle < rowSize; yAxle++) {
 			for (int xAxle = 0; xAxle < colSize; xAxle++) {
@@ -44,21 +40,18 @@ public class gameModel {
 				c.setTranslateY(yAxle * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
 
 				form = Shape.subtract(form, c);
+				
+				form.setFill(GAME_BOARD);
 			}
 		}
 
 		return form;
 
 	}
-	
-	
-	
-	
 
 	public static List<Rectangle> createCol() {
 
 		List<Rectangle> colList = new ArrayList<>();
-		
 
 		for (int xCol = 0; xCol < colSize; xCol++) {
 
@@ -67,8 +60,6 @@ public class gameModel {
 
 			r1.setFill(Color.TRANSPARENT);
 			r1.setOnMouseEntered(e -> r1.setFill(HOVER_FILL));
-
-			
 
 			r1.setOnMouseExited(e -> r1.setFill(Color.TRANSPARENT));
 
@@ -84,36 +75,28 @@ public class gameModel {
 		return colList;
 	}
 
-
-
-
-
 	public static int getRowSize() {
 		return rowSize;
 	}
-
-
-
-
 
 	public static void setRowSize(int rowSize) {
 		gameModel.rowSize = rowSize;
 	}
 
-
-
-
-
 	public static int getColSize() {
 		return colSize;
 	}
 
-
-
-
-
 	public static void setColSize(int colSize) {
 		gameModel.colSize = colSize;
+	}
+
+	public static Color getGameBoard() {
+		return GAME_BOARD;
+	}
+	
+	public static void setGameBoard(Color GAME_BOARD) {
+		gameModel.GAME_BOARD = GAME_BOARD;
 	}
 	
 	
