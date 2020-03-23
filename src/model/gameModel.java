@@ -12,7 +12,7 @@ import javafx.scene.shape.Shape;
 public class gameModel {
 
 	// Gameboard Size
-	/* TODO: Change implement the function to change gameboard size */
+	
 	// GameboardSize is changeable in gameController with MenuItems
 
 	protected static int rowSize = 6;
@@ -66,7 +66,12 @@ public class gameModel {
 			final int col = xCol;
 
 			/* TODO: Build Method for setDisc */
-			r1.setOnMouseClicked(null);
+			r1.setOnMouseClicked(e->{
+				/*TODO: Place Disk method */
+				
+				//placeDisc(new Disc(redMove), col);
+				System.out.println("Test Mouse Click");
+			});
 
 			colList.add(r1);
 
