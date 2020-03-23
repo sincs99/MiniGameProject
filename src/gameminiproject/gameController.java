@@ -1,6 +1,7 @@
 package gameminiproject;
 
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import model.gameModel;
@@ -54,13 +55,16 @@ public class gameController {
 
 			this.refreshGameBoard();
 
-			view.getRoot().getCenter().setLayoutY(100);
+			
 		});
 	}
 
 	private void refreshGameBoard() {
 		view.getRoot().setCenter(null);
 		view.getRoot().setCenter(gameGrid.createBoard());
+		//view.getCenterPane().getChildren().add(null);
+		//view.getCenterPane().getChildren().add(gameGrid.createBoard());
+		
 	}
 
 }

@@ -2,8 +2,11 @@ package view;
 
 import gameminiproject.gameController;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Shape;
 import model.gameModel;
 
@@ -13,8 +16,10 @@ public class gameGrid {
 	
 	private static Pane disc = new Pane();
 	
+	
 	public static Parent createBoard() {
 		Pane gameRoot = new Pane();
+		
 		gameRoot.getChildren().add(disc);
 		
 		Shape boardShape = gameModel.buildBoard();
@@ -24,8 +29,13 @@ public class gameGrid {
 		gameRoot.setPadding(new Insets(10, 10, 10, 10));
 		
 		gameRoot.setPrefWidth(400);
+		
+		
+		
+
+		
 	
-		return gameRoot;
+		return 	gameRoot;
 	}
 
 }
