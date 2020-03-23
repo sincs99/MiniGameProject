@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,6 +20,7 @@ public class gameView {
 	private gameModel model;
 	private topMenuBar menuBar;
 	private BorderPane root;
+	private StackPane centerPane;
 
 	protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
 
@@ -39,6 +41,7 @@ public class gameView {
 		VBox player2 = new VBox();
 		HBox card1 = new HBox();
 		HBox card2 = new HBox();
+		centerPane = new StackPane();
 		
 		
 
@@ -55,6 +58,8 @@ public class gameView {
 		player1.setPrefWidth(200);
 		player2.getChildren().addAll(lblplayer2, card2);
 		player2.setPrefWidth(200);
+		
+		//centerPane.getChildren().add(gameGrid.createBoard());
 
 		// Setting root Objects
 
@@ -63,6 +68,10 @@ public class gameView {
 		root.setBottom(buttonView.buttonViewBuilder());
 
 		root.setCenter(gameGrid.createBoard());
+		
+		//TODO: idk why its not working -_-
+		BorderPane.setAlignment(centerPane, Pos.BOTTOM_CENTER);
+		
 		root.setTop(menuBar);
 
 		root.setPadding(new Insets(0, 0, 10, 0));
@@ -96,6 +105,12 @@ public class gameView {
 		this.root = root;
 	}
 	
+	public void setCenterPane(StackPane centerPane) {
+		this.centerPane = centerPane;
+	}
 	
+	public StackPane getCenterPane() {
+		return centerPane;
+	}
 
 }
