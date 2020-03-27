@@ -80,7 +80,7 @@ public class gameModel {
 			r1.setOnMouseClicked(e -> {
 				/* TODO: Place Disk method */
 
-				placeDisc(new Disc(redMove), col);
+				//placeDisc(new Disc(redMove), col);
 				System.out.println("Test Mouse Click");
 			});
 
@@ -91,44 +91,44 @@ public class gameModel {
 		return colList;
 	}
 
-	private static void placeDisc(Disc disc, int col) {
-		int row = rowSize -1;
-		
-		
-		do {
-			if (!getDisc(col, row).isPresent())
-				break;
-			
-			row--;
-			
-		} while (row >=0);
-		if (row < 0)
-			return;
-		
-		grid[col][row] = disc;
-		
-		//TODO: Experimental Test
-		view.gameGrid.createBoard();
-		
-		//End Test
-		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
-		final int rowAtm = row;
-		
-		TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), disc);
-		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /4);
-		animation.setOnFinished(e->{
-			
-			//TODO:FIX some errors!!!!
-			if (gameEnded(col, rowAtm)) {
-				gameOver();
-			}
-			
-			redMove = !redMove;
-		});
-		
-		animation.play();
-		
-	}
+//	private static void placeDisc(Disc disc, int col) {
+//		int row = rowSize -1;
+//		
+//		
+//		do {
+//			if (!getDisc(col, row).isPresent())
+//				break;
+//			
+//			row--;
+//			
+//		} while (row >=0);
+//		if (row < 0)
+//			return;
+//		
+//		grid[col][row] = disc;
+//		
+//		//TODO: Experimental Test
+//		view.gameGrid.createBoard();
+//		
+//		//End Test
+//		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
+//		final int rowAtm = row;
+//		
+//		TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), disc);
+//		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /4);
+//		animation.setOnFinished(e->{
+//			
+//			//TODO:FIX some errors!!!!
+//			if (gameEnded(col, rowAtm)) {
+//				gameOver();
+//			}
+//			
+//			redMove = !redMove;
+//		});
+//		
+//		animation.play();
+//		
+//	}
 	
 	
 	private static Optional <Disc> getDisc(int col, int row){
