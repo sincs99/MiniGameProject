@@ -17,8 +17,9 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
+import view.gameGrid;
 
-public class gameModel {
+public class gameModel extends gameGrid{
 	// Gameboard Size
 	//TODO: gameModel contains some Errors! I need to fix it first - Pascal
 
@@ -29,8 +30,8 @@ public class gameModel {
 
 	protected static Color GAME_BOARD = Color.BLUEVIOLET;
 	
-	private static boolean redMove = true;
-	private static Disc[][] grid = new Disc [rowSize][colSize];
+	protected static boolean redMove = true;
+	private static Disc[][] grid = new Disc [colSize][rowSize];
 	
 	
 
@@ -116,14 +117,14 @@ public class gameModel {
 		grid[col][row] = disc;
 		
 		//TODO: Experimental Test
-		view.gameGrid.createBoard();
+		discPane.getChildren().add(disc);
 		
 		//End Test
-		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
+		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 3);
 		final int rowAtm = row;
 		
 		TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), disc);
-		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /4);
+		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /3);
 		animation.setOnFinished(e->{
 			
 			//TODO:FIX some errors!!!!
@@ -153,24 +154,26 @@ public class gameModel {
 		dia2 = IntStream.rangeClosed(0, 6).mapToObj(g -> bL.add(g, -g)).collect(Collectors.toList());
 		
 		
-		return checkRange(v) || checkRange(h)|| checkRange(dia1) || checkRange(dia2);
+		return CheckLogic.checkMove(v) || CheckLogic.checkMove(h)|| CheckLogic.checkMove(dia1) || CheckLogic.checkMove(dia2);
 	
 				
 	}
 	
 	
-	private static Optional <Disc> getDisc(int col, int row){
+	protected static Optional <Disc> getDisc(int col, int row){
 		if (col < 0 || col >= colSize || row < 0 || row>=rowSize)
 			return Optional.empty();
 		
 		return Optional.ofNullable(grid[col][row]);
 		
 	}
-
-	private static Object getDisc(int col, int row) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	protected static void gameOver() {
+		System.out.println("Winner: " + (redMove ? " RED! " : "Yellow" ));
 	}
+
+
 
 	public static int getRowSize() {
 		return rowSize;
