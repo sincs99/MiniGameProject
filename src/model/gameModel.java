@@ -3,9 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -17,6 +20,7 @@ import javafx.util.Duration;
 
 public class gameModel {
 	// Gameboard Size
+	//TODO: gameModel contains some Errors! I need to fix it first - Pascal
 
 	// GameboardSize is changeable in gameController with MenuItems
 
@@ -46,6 +50,7 @@ public class gameModel {
 				c.setCenterY(view.gameGrid.DISC_SIZE / 2);
 				
 				// +5 space between disc's
+				
 				c.setTranslateX(xAxle * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 3);
 				c.setTranslateY(yAxle * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 3);
 
@@ -67,7 +72,10 @@ public class gameModel {
 		for (int xCol = 0; xCol < colSize; xCol++) {
 
 			Rectangle r1 = new Rectangle(view.gameGrid.DISC_SIZE, (rowSize + 1) * view.gameGrid.DISC_SIZE);
-			r1.setTranslateX(xCol * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
+			r1.setTranslateX(xCol * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 3);
+			
+			
+			
 
 			r1.setFill(Color.TRANSPARENT);
 			r1.setOnMouseEntered(e -> r1.setFill(HOVER_FILL));
@@ -80,7 +88,7 @@ public class gameModel {
 			r1.setOnMouseClicked(e -> {
 				/* TODO: Place Disk method */
 
-				//placeDisc(new Disc(redMove), col);
+				placeDisc(new Disc(redMove), col);
 				System.out.println("Test Mouse Click");
 			});
 
@@ -91,44 +99,64 @@ public class gameModel {
 		return colList;
 	}
 
-//	private static void placeDisc(Disc disc, int col) {
-//		int row = rowSize -1;
-//		
-//		
-//		do {
-//			if (!getDisc(col, row).isPresent())
-//				break;
-//			
-//			row--;
-//			
-//		} while (row >=0);
-//		if (row < 0)
-//			return;
-//		
-//		grid[col][row] = disc;
-//		
-//		//TODO: Experimental Test
-//		view.gameGrid.createBoard();
-//		
-//		//End Test
-//		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
-//		final int rowAtm = row;
-//		
-//		TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), disc);
-//		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /4);
-//		animation.setOnFinished(e->{
-//			
-//			//TODO:FIX some errors!!!!
-//			if (gameEnded(col, rowAtm)) {
-//				gameOver();
-//			}
-//			
-//			redMove = !redMove;
-//		});
-//		
-//		animation.play();
-//		
-//	}
+	private static void placeDisc(Disc disc, int col) {
+		int row = rowSize -1;
+		
+		
+		do {
+			if (!getDisc(col, row).isPresent())
+				break;
+			
+			row--;
+			
+		} while (row >=0);
+		if (row < 0)
+			return;
+		
+		grid[col][row] = disc;
+		
+		//TODO: Experimental Test
+		view.gameGrid.createBoard();
+		
+		//End Test
+		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
+		final int rowAtm = row;
+		
+		TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), disc);
+		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /4);
+		animation.setOnFinished(e->{
+			
+			//TODO:FIX some errors!!!!
+			if (gameEnded(col, rowAtm)) {
+				gameOver();
+			}
+			
+			redMove = !redMove;
+		});
+		
+		animation.play();
+		
+	}
+	
+	
+	private static boolean gameEnded(int col, int row) {
+		
+		List<Point2D> v = new ArrayList <Point2D> ();
+		List<Point2D> h = new ArrayList <Point2D> ();
+		List<Point2D> dia1 = new ArrayList <Point2D> ();
+		List<Point2D> dia2 = new ArrayList <Point2D> ();
+		Point2D tL = new Point2D(col -3, row -3);
+		Point2D bL = new Point2D (col -3, row -3);
+		v = IntStream.rangeClosed(row -3, row+3).mapToObj(r -> new Point2D(col, r)).collect(Collectors.toList());
+		h = IntStream.rangeClosed(col - 3, col + 3).mapToObj(c -> new Point2D(c, row)).collect(Collectors.toList());
+		dia1 = IntStream.rangeClosed(0, 6).mapToObj(g -> tL.add(g, g)).collect(Collectors.toList());
+		dia2 = IntStream.rangeClosed(0, 6).mapToObj(g -> bL.add(g, -g)).collect(Collectors.toList());
+		
+		
+		return checkRange(v) || checkRange(h)|| checkRange(dia1) || checkRange(dia2);
+	
+				
+	}
 	
 	
 	private static Optional <Disc> getDisc(int col, int row){
@@ -139,10 +167,10 @@ public class gameModel {
 		
 	}
 
-//	private static Object getDisc(int col, int row) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	private static Object getDisc(int col, int row) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public static int getRowSize() {
 		return rowSize;
