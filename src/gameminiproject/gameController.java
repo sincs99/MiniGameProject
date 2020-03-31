@@ -4,20 +4,21 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
+import model.Disc;
 import model.gameModel;
-import player.Cpu;
-import player.Player;
+import player.Player1;
+import player.Player2;
 import view.gameGrid;
 import view.gameView;
 import view.topMenuBar;
 
-public class gameController {
+public class gameController extends gameGrid {
 
 	private gameView view;
 	private gameModel model;
 
-	protected Player player;
-	protected Cpu cpu;
+	protected Player1 player1;
+	protected Player2 player2;
 
 	public gameController(gameView view, gameModel model) {
 		this.view = view;
@@ -57,11 +58,32 @@ public class gameController {
 
 			
 		});
+		
+		
+		view.getMenuBar().getColor1().setOnAction(e->{
+			Disc.setC1(Color.RED);
+			this.refreshGameBoard();
+		});
+		
+		view.getMenuBar().getColor1().setOnAction(e->{
+			Disc.setC1(Color.BLUE);
+			this.refreshGameBoard();
+		});
+		
+		view.getMenuBar().getColor2().setOnAction(e->{
+			Disc.setC1(Color.YELLOW);
+			this.refreshGameBoard();
+		});
+		
+		view.getMenuBar().getColor2().setOnAction(e->{
+			Disc.setC1(Color.GREEN);
+			this.refreshGameBoard();
+		});
 	}
 
 	private void refreshGameBoard() {
 		view.getRoot().setCenter(null);
-		view.getRoot().setCenter(gameGrid.createBoard());
+		view.getRoot().setCenter(createBoard());
 		//view.getCenterPane().getChildren().add(null);
 		//view.getCenterPane().getChildren().add(gameGrid.createBoard());
 		

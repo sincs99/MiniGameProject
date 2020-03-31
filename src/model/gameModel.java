@@ -17,8 +17,9 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
+import view.gameGrid;
 
-public class gameModel {
+public class gameModel extends gameGrid{
 	// Gameboard Size
 	//TODO: gameModel contains some Errors! I need to fix it first - Pascal
 
@@ -30,7 +31,7 @@ public class gameModel {
 	protected static Color GAME_BOARD = Color.BLUEVIOLET;
 	
 	protected static boolean redMove = true;
-	private static Disc[][] grid = new Disc [rowSize][colSize];
+	private static Disc[][] grid = new Disc [colSize][rowSize];
 	
 	
 
@@ -116,14 +117,14 @@ public class gameModel {
 		grid[col][row] = disc;
 		
 		//TODO: Experimental Test
-		view.gameGrid.createBoard();
+		discPane.getChildren().add(disc);
 		
 		//End Test
-		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 4);
+		disc.setTranslateX(col * (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE / 3);
 		final int rowAtm = row;
 		
 		TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), disc);
-		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /4);
+		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /3);
 		animation.setOnFinished(e->{
 			
 			//TODO:FIX some errors!!!!

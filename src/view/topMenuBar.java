@@ -12,8 +12,19 @@ import model.gameModel;
 
 public class topMenuBar extends MenuBar {
 
-	private Menu help, gameProperties, start, gameBoard, color;
-	private MenuItem rules, about, exit, newGame, sevenSix, fourFour, blue, red;
+	private Menu help, gameProperties, start, gameBoard, color, colorOfDisc, player1,player2;
+	private MenuItem rules, 
+						about, 
+						exit, 
+						newGame, 
+						sevenSix, 
+						fourFour, 
+						blue, 
+						red,
+						color1,
+						color2,
+						color3,
+						color4;
 	//public static ColorPicker colorOfBoard;
 
 
@@ -44,6 +55,17 @@ public class topMenuBar extends MenuBar {
 		blue = new MenuItem("Blue");
 		red = new MenuItem("Red");
 		//color.setOnAction(e->colorOfBoard);
+		
+		colorOfDisc = new Menu("Color of Chips");
+		player1 = new Menu("Color Player 1");
+		player2 = new Menu ("Color Player 2");
+		color1 = new MenuItem("Color Rot");
+		color2 = new MenuItem("Color Blau");
+		color3 = new MenuItem("Color Gelb");
+		color4 = new MenuItem("Color Grün");
+		
+		
+		
 
 		exit = new MenuItem("Exit");
 		newGame = new MenuItem("New Game");
@@ -57,11 +79,14 @@ public class topMenuBar extends MenuBar {
 		//color.getItems().addAll(colorOfBoard);
 		
 		
+		
+		player1.getItems().addAll(color1, color2);
+		player2.getItems().addAll(color3, color4);
 
 		color.getItems().addAll(blue, red);
 		gameBoard.getItems().addAll(sevenSix, fourFour);
 		help.getItems().addAll(rules, about);
-		gameProperties.getItems().addAll(color, gameBoard);
+		gameProperties.getItems().addAll(color, gameBoard, player1, player2);
 		start.getItems().addAll(newGame, exit);
 
 		this.getMenus().addAll(start, gameProperties, help);
@@ -176,6 +201,38 @@ public class topMenuBar extends MenuBar {
 
 	public void setGameProperties(Menu gameProperties) {
 		this.gameProperties = gameProperties;
+	}
+
+	public MenuItem getColor1() {
+		return color1;
+	}
+
+	public void setColor1(MenuItem color1) {
+		this.color1 = color1;
+	}
+
+	public MenuItem getColor2() {
+		return color2;
+	}
+
+	public void setColor2(MenuItem color2) {
+		this.color2 = color2;
+	}
+
+	public MenuItem getColor3() {
+		return color3;
+	}
+
+	public void setColor3(MenuItem color3) {
+		this.color3 = color3;
+	}
+
+	public MenuItem getColor4() {
+		return color4;
+	}
+
+	public void setColor4(MenuItem color4) {
+		this.color4 = color4;
 	}
 	
 	

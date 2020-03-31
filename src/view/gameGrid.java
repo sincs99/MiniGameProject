@@ -13,13 +13,17 @@ import model.gameModel;
 public class gameGrid {
 
 	public static final int DISC_SIZE = 60;
+	protected static Pane gameRoot = new Pane();
 
-	private static Pane disc = new Pane();
+	protected static Pane discPane = new Pane();
 
 	public static Parent createBoard() {
-		Pane gameRoot = new Pane();
+		
+		
+		
 
-		gameRoot.getChildren().add(disc);
+		gameRoot.getChildren().add(discPane);
+		
 
 		Shape boardShape = gameModel.buildBoard();
 		gameRoot.getChildren().add(boardShape);
