@@ -65,18 +65,18 @@ public class gameController extends gameGrid {
 			this.refreshGameBoard();
 		});
 		
-		view.getMenuBar().getColor1().setOnAction(e->{
+		view.getMenuBar().getColor2().setOnAction(e->{
 			Disc.setC1(Color.BLUE);
 			this.refreshGameBoard();
 		});
 		
-		view.getMenuBar().getColor2().setOnAction(e->{
-			Disc.setC1(Color.YELLOW);
+		view.getMenuBar().getColor3().setOnAction(e->{
+			Disc.setC2(Color.YELLOW);
 			this.refreshGameBoard();
 		});
 		
-		view.getMenuBar().getColor2().setOnAction(e->{
-			Disc.setC1(Color.GREEN);
+		view.getMenuBar().getColor4().setOnAction(e->{
+			Disc.setC2(Color.GREEN);
 			this.refreshGameBoard();
 		});
 	}

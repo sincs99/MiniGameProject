@@ -31,7 +31,7 @@ public class gameModel extends gameGrid{
 	protected static Color GAME_BOARD = Color.BLUEVIOLET;
 	
 	protected static boolean redMove = true;
-	private static Disc[][] grid = new Disc [colSize][rowSize];
+	private static Disc[][] grid;
 	
 	
 
@@ -39,6 +39,8 @@ public class gameModel extends gameGrid{
 	protected final static Color HOVER_FILL = new Color(0.5, 1.0, 1.0, 0.3);
 
 	public static Shape buildBoard() {
+		
+		grid = new Disc [colSize][rowSize];
 
 		Shape form = new Rectangle((colSize + 1) * view.gameGrid.DISC_SIZE, (rowSize + 1) * view.gameGrid.DISC_SIZE);
 
@@ -125,17 +127,17 @@ public class gameModel extends gameGrid{
 		
 		TranslateTransition animation = new TranslateTransition(Duration.seconds(0.5), disc);
 		animation.setToY(row* (view.gameGrid.DISC_SIZE + 5) + view.gameGrid.DISC_SIZE /3);
-		animation.setOnFinished(e->{
-			
+		
+			animation.play();
 			//TODO:FIX some errors!!!!
 			if (gameEnded(col, rowAtm)) {
 				gameOver();
 			}
 			
 			redMove = !redMove;
-		});
 		
-		animation.play();
+		
+		
 		
 	}
 	

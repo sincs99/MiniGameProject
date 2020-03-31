@@ -20,7 +20,8 @@ public class gameGrid {
 	public static Parent createBoard() {
 		
 		
-		
+		discPane.getChildren().clear();
+		gameRoot.getChildren().clear();
 
 		gameRoot.getChildren().add(discPane);
 		
