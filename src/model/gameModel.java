@@ -29,7 +29,7 @@ public class gameModel {
 
 	protected static Color GAME_BOARD = Color.BLUEVIOLET;
 	
-	private static boolean redMove = true;
+	protected static boolean redMove = true;
 	private static Disc[][] grid = new Disc [rowSize][colSize];
 	
 	
@@ -153,24 +153,26 @@ public class gameModel {
 		dia2 = IntStream.rangeClosed(0, 6).mapToObj(g -> bL.add(g, -g)).collect(Collectors.toList());
 		
 		
-		return checkRange(v) || checkRange(h)|| checkRange(dia1) || checkRange(dia2);
+		return CheckLogic.checkMove(v) || CheckLogic.checkMove(h)|| CheckLogic.checkMove(dia1) || CheckLogic.checkMove(dia2);
 	
 				
 	}
 	
 	
-	private static Optional <Disc> getDisc(int col, int row){
+	protected static Optional <Disc> getDisc(int col, int row){
 		if (col < 0 || col >= colSize || row < 0 || row>=rowSize)
 			return Optional.empty();
 		
 		return Optional.ofNullable(grid[col][row]);
 		
 	}
-
-	private static Object getDisc(int col, int row) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	protected static void gameOver() {
+		System.out.println("Winner: " + (redMove ? " RED! " : "Yellow" ));
 	}
+
+
 
 	public static int getRowSize() {
 		return rowSize;
