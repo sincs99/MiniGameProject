@@ -37,26 +37,30 @@ public class gameView {
 		// Boxing
 
 		root = new BorderPane();
-		VBox player1 = new VBox();
+		
 		VBox player2 = new VBox();
-		HBox card1 = new HBox();
-		HBox card2 = new HBox();
+		VBox player1 = new VBox();
+		
 		centerPane = new StackPane();
 		
 		
 
 		// Labels
 
+		
 		this.lblplayer1 = new Label("Player 1");
 		this.lblplayer1.setId("playerText");
+		
 		this.lblplayer2 = new Label("Player 2");
 		this.lblplayer2.setId("playerText");
 
 		// Building the Boxes
-
-		player1.getChildren().addAll(lblplayer1, card1);
+		
+		player1.getChildren().addAll(lblplayer1);
 		player1.setPrefWidth(200);
-		player2.getChildren().addAll(lblplayer2, card2);
+
+
+		player2.getChildren().addAll(lblplayer2);
 		player2.setPrefWidth(200);
 		
 		//centerPane.getChildren().add(gameGrid.createBoard());

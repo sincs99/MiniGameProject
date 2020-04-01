@@ -31,8 +31,7 @@ public class gameController extends gameGrid {
 
 			this.refreshGameBoard();
 		});
-		
-		
+
 		view.getMenuBar().getRed().setOnAction(e -> {
 			gameModel.setGameBoard(Color.DARKRED);
 
@@ -56,26 +55,24 @@ public class gameController extends gameGrid {
 
 			this.refreshGameBoard();
 
-			
 		});
-		
-		
-		view.getMenuBar().getColor1().setOnAction(e->{
+
+		view.getMenuBar().getColor1().setOnAction(e -> {
 			Disc.setC1(Color.RED);
 			this.refreshGameBoard();
 		});
-		
-		view.getMenuBar().getColor2().setOnAction(e->{
+
+		view.getMenuBar().getColor2().setOnAction(e -> {
 			Disc.setC1(Color.BLUE);
 			this.refreshGameBoard();
 		});
-		
-		view.getMenuBar().getColor3().setOnAction(e->{
+
+		view.getMenuBar().getColor3().setOnAction(e -> {
 			Disc.setC2(Color.YELLOW);
 			this.refreshGameBoard();
 		});
-		
-		view.getMenuBar().getColor4().setOnAction(e->{
+
+		view.getMenuBar().getColor4().setOnAction(e -> {
 			Disc.setC2(Color.GREEN);
 			this.refreshGameBoard();
 		});
@@ -84,9 +81,9 @@ public class gameController extends gameGrid {
 	private void refreshGameBoard() {
 		view.getRoot().setCenter(null);
 		view.getRoot().setCenter(createBoard());
-		//view.getCenterPane().getChildren().add(null);
-		//view.getCenterPane().getChildren().add(gameGrid.createBoard());
-		
+		// view.getCenterPane().getChildren().add(null);
+		// view.getCenterPane().getChildren().add(gameGrid.createBoard());
+
 	}
 
 }
