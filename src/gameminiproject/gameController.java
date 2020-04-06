@@ -8,6 +8,8 @@ import model.Disc;
 import model.gameModel;
 import player.Player1;
 import player.Player2;
+import view.HomeScreen;
+import view.buttonView;
 import view.gameGrid;
 import view.gameView;
 import view.topMenuBar;
@@ -24,8 +26,6 @@ public class gameController extends gameGrid {
 		this.view = view;
 		this.model = model;
 
-		
-		
 		view.getMenuBar().getBlue().setOnAction(e -> {
 			gameModel.setGameBoard(Color.CORNFLOWERBLUE);
 
@@ -76,6 +76,29 @@ public class gameController extends gameGrid {
 			Disc.setC2(Color.GREEN);
 			this.refreshGameBoard();
 		});
+
+		buttonView.getButtonView().getBtnStartGame().setOnAction(e -> {
+			System.out.println("Fired");
+
+			HomeScreen.getHomeScreen().setPlayerName();
+			view.getLblplayer1().setText(HomeScreen.getHomeScreen().getPlayer1());
+			view.getLblplayer2().setText(HomeScreen.getHomeScreen().getPlayer2());
+			System.out.println(HomeScreen.getHomeScreen().getPlayer1());
+			view.changeScene();
+
+		});
+
+		buttonView.getButtonView().getBtnNewGame().setOnAction(e -> {
+
+			this.refreshGameBoard();
+
+		});
+
+		view.getMenuBar().getNewGame().setOnAction(e -> {
+			this.refreshGameBoard();
+
+		});
+
 	}
 
 	private void refreshGameBoard() {

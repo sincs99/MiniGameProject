@@ -1,34 +1,92 @@
 package view;
 
+import gameminiproject.gameController;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class buttonView {
+public class buttonView extends HBox {
 
-	private static Button btnNewGame, btnShuffle, exit;
-	private static HBox buttonPane;
+	private Button btnStartGame, exit, btnNewGame;
+	private HBox btnBottomPane, btnGamePane;
+	private static buttonView btnV;
 
-	public static Parent buttonViewBuilder() {
+	public static buttonView getButtonView() {
+		if (btnV == null) {
+			btnV = new buttonView();
+		}
 
-		buttonPane = new HBox(8);
+		return btnV;
+	}
 
-		btnNewGame = new Button("New Game");
-		btnNewGame.setId("button");
-		btnShuffle = new Button("Shuffle");
-		btnShuffle.setId("button");
+	private buttonView() {
+
+	}
+	
+	
+	public Parent buttonGameViewBuilder() {
+		
+		btnGamePane = new HBox(8);
+		
+		btnNewGame = new Button ("New Game");
+		
+		exit = new Button("Exit");
+		exit.setId("exit");
+		exit.setOnAction(e -> {
+			Platform.exit();
+		});
+		
+		
+		btnGamePane.getChildren().addAll(btnNewGame, exit);
+		btnGamePane.setAlignment(Pos.CENTER);
+
+		
+		
+		return btnGamePane;
+	}
+
+	public Parent buttonStartViewBuilder() {
+
+		btnBottomPane = new HBox(8);
+
+		btnStartGame = new Button("Start Game");
+		btnStartGame.setId("button");
 
 		// Exit Button
 		exit = new Button("Exit");
 		exit.setId("exit");
-		exit.setOnAction(e -> Platform.exit());
+		exit.setOnAction(e -> {
+			Platform.exit();
+		});
 
-		buttonPane.getChildren().addAll(btnNewGame, btnShuffle, exit);
-		buttonPane.setAlignment(Pos.CENTER);
+		btnBottomPane.getChildren().addAll(btnStartGame, exit);
+		btnBottomPane.setAlignment(Pos.CENTER);
 
-		return buttonPane;
+		return btnBottomPane;
+	}
+
+	public Button getBtnStartGame() {
+		return btnStartGame;
+	}
+
+	public Button getExit() {
+		return exit;
+	}
+
+	public HBox getButtonPane() {
+		return btnBottomPane;
+	}
+
+	public void setButtonPane(HBox buttonPane) {
+		buttonPane = buttonPane;
+	}
+
+	public Button getBtnNewGame() {
+		
+		return btnNewGame;
 	}
 }

@@ -10,6 +10,7 @@ public class main extends Application {
 	private gameView view;
 	private gameController controller;
 	private gameModel model;
+	
 
 	public static void main(String[] args) {
 		launch();

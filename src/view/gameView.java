@@ -3,9 +3,11 @@ package view;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -19,13 +21,17 @@ public class gameView {
 	private Stage stage;
 	private gameModel model;
 	private topMenuBar menuBar;
-	private BorderPane root;
+	private BorderPane gameRoot;
+	private BorderPane homeRoot;
+	private Scene scene;
+
 	private StackPane centerPane;
 
 	protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
 
 	public gameView(Stage stage, gameModel model) {
 		this.stage = stage;
+
 		this.model = model;
 		this.menuBar = new topMenuBar();
 
@@ -36,60 +42,83 @@ public class gameView {
 
 		// Boxing
 
-		root = new BorderPane();
+		gameRoot = new BorderPane();
+		homeRoot = new BorderPane();
+
+		VBox player2 = new VBox(10);
+		VBox player1 = new VBox(10);
 		
-		VBox player2 = new VBox();
-		VBox player1 = new VBox();
-		
+		player1.setPadding(new Insets(10,10,10,10));
+		player2.setPadding(new Insets(10,10,10,10));
+
 		centerPane = new StackPane();
-		
-		
+
+		// BorderPane homeScreen = new BorderPane();
 
 		// Labels
 
-		
-		this.lblplayer1 = new Label("Player 1");
+		this.lblplayer1 = new Label();
 		this.lblplayer1.setId("playerText");
-		
+
 		this.lblplayer2 = new Label("Player 2");
 		this.lblplayer2.setId("playerText");
 
 		// Building the Boxes
-		
+
 		player1.getChildren().addAll(lblplayer1);
 		player1.setPrefWidth(200);
-
+		
 
 		player2.getChildren().addAll(lblplayer2);
 		player2.setPrefWidth(200);
-		
-		//centerPane.getChildren().add(gameGrid.createBoard());
+
+		// centerPane.getChildren().add(gameGrid.createBoard());
 
 		// Setting root Objects
 
-		root.setLeft(player1);
-		root.setRight(player2);
-		root.setBottom(buttonView.buttonViewBuilder());
+		homeRoot.setCenter(HomeScreen.getHomeScreen().buildHomeScreen());
+		homeRoot.setBottom(buttonView.getButtonView().buttonStartViewBuilder());
+		homeRoot.setPadding(new Insets(0, 0, 10, 0));
 
-		root.setCenter(gameGrid.createBoard());
-		
-		//TODO: idk why its not working -_-
+		gameRoot.setLeft(player1);
+		gameRoot.setRight(player2);
+		gameRoot.setBottom(buttonView.getButtonView().buttonGameViewBuilder());
+
+		gameRoot.setCenter(gameGrid.createBoard());
+		homeRoot.setId("background_home");
+
+		// TODO: idk why its not working -_-
 		BorderPane.setAlignment(centerPane, Pos.BOTTOM_CENTER);
-		
-		root.setTop(menuBar);
 
-		root.setPadding(new Insets(0, 0, 10, 0));
+		gameRoot.setTop(menuBar);
+
+		gameRoot.setPadding(new Insets(0, 0, 10, 0));
 
 		// Setting Scene
 
-		Scene scene = new Scene(root, 900, 500);
-	
+		scene = new Scene(gameRoot, 900, 500);
+		Scene homeScene = new Scene(homeRoot, 900, 500);
+		
+		
+		
+		homeScene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
 		scene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
-		stage.setScene(scene);
+		
+		stage.setScene(homeScene);
+//		buttonView.getBtnNewGame().setOnAction(e->{
+//			System.out.println("Fired");
+//			//stage.setScene(scene);
+//		});
+
 		stage.setTitle("four in a row");
 		stage.setResizable(false);
 		stage.initStyle(StageStyle.UNDECORATED);
 
+	}
+
+	public void changeScene() {
+		stage.setScene(scene);
+		stage.show();
 	}
 
 	public void start() {
@@ -102,19 +131,59 @@ public class gameView {
 	}
 
 	public BorderPane getRoot() {
-		return root;
+		return gameRoot;
 	}
 
 	public void setRoot(BorderPane root) {
-		this.root = root;
+		this.gameRoot = root;
 	}
-	
+
 	public void setCenterPane(StackPane centerPane) {
 		this.centerPane = centerPane;
 	}
-	
+
 	public StackPane getCenterPane() {
 		return centerPane;
+	}
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+
+	public BorderPane getGameRoot() {
+		return gameRoot;
+	}
+
+	public void setGameRoot(BorderPane gameRoot) {
+		this.gameRoot = gameRoot;
+	}
+
+	public BorderPane getHomeRoot() {
+		return homeRoot;
+	}
+
+	public void setHomeRoot(BorderPane homeRoot) {
+		this.homeRoot = homeRoot;
+	}
+
+	public Label getLblplayer1() {
+		return lblplayer1;
+	}
+
+	public void setLblplayer1(Label lblplayer1) {
+		lblplayer1 = lblplayer1;
+	}
+
+	public Label getLblplayer2() {
+		return lblplayer2;
+	}
+
+	public void setLblplayer2(Label lblplayer2) {
+		lblplayer2 = lblplayer2;
 	}
 
 }
