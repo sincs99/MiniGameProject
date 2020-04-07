@@ -93,6 +93,8 @@ public class gameModel extends gameGrid{
 
 				placeDisc(new Disc(redMove), col);
 				System.out.println("Test Mouse Click");
+				
+				
 			});
 
 			colList.add(r1);
@@ -135,6 +137,9 @@ public class gameModel extends gameGrid{
 			}
 			
 			redMove = !redMove;
+			
+			
+			
 		
 		
 		
@@ -200,5 +205,15 @@ public class gameModel extends gameGrid{
 	public static void setGameBoard(Color GAME_BOARD) {
 		gameModel.GAME_BOARD = GAME_BOARD;
 	}
+
+	public static boolean isRedMove() {
+		return redMove;
+	}
+
+	public static void setRedMove(boolean redMove) {
+		gameModel.redMove = redMove;
+	}
+	
+	
 
 }

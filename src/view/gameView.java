@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.gameModel;
+import player.Player;
 
 public class gameView {
 
@@ -24,10 +25,15 @@ public class gameView {
 	private BorderPane gameRoot;
 	private BorderPane homeRoot;
 	private Scene scene;
+	private Label onRow;
+	private VBox bottomBox;
+	//private VBox player1, player2;
 
 	private StackPane centerPane;
 
-	protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
+	//Labels moved to Player
+	//protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
+	
 
 	public gameView(Stage stage, gameModel model) {
 		this.stage = stage;
@@ -35,21 +41,17 @@ public class gameView {
 		this.model = model;
 		this.menuBar = new topMenuBar();
 
-		this.lblplayer1 = lblplayer1;
-		this.lblplayer2 = lblplayer2;
-		this.lblcards1 = lblcards1;
-		this.lblcards2 = lblcards2;
 
 		// Boxing
 
 		gameRoot = new BorderPane();
 		homeRoot = new BorderPane();
 
-		VBox player2 = new VBox(10);
-		VBox player1 = new VBox(10);
+		//player2 = new VBox(10);
+		//player1 = new VBox(10);
 		
-		player1.setPadding(new Insets(10,10,10,10));
-		player2.setPadding(new Insets(10,10,10,10));
+		//player1.setPadding(new Insets(10,10,10,10));
+		//player2.setPadding(new Insets(10,10,10,10));
 
 		centerPane = new StackPane();
 
@@ -57,22 +59,23 @@ public class gameView {
 
 		// Labels
 
-		this.lblplayer1 = new Label();
-		this.lblplayer1.setId("playerText");
-
-		this.lblplayer2 = new Label("Player 2");
-		this.lblplayer2.setId("playerText");
+//		this.lblplayer1 = new Label();
+//		this.lblplayer1.setId("playerText");
+//
+//		this.lblplayer2 = new Label();
+//		this.lblplayer2.setId("playerText");
 
 		// Building the Boxes
 
-		player1.getChildren().addAll(lblplayer1);
-		player1.setPrefWidth(200);
+		//player1.getChildren().addAll(lblplayer1);
+		//player1.getChildren().addAll(Player1.getPlayerView().playerViewBuilder());
+		//player1.setPrefWidth(200);
 		
 
-		player2.getChildren().addAll(lblplayer2);
-		player2.setPrefWidth(200);
+		//player2.getChildren().addAll(lblplayer2);
+		//player2.setPrefWidth(200);
 
-		// centerPane.getChildren().add(gameGrid.createBoard());
+		
 
 		// Setting root Objects
 
@@ -80,15 +83,22 @@ public class gameView {
 		homeRoot.setBottom(buttonView.getButtonView().buttonStartViewBuilder());
 		homeRoot.setPadding(new Insets(0, 0, 10, 0));
 
-		gameRoot.setLeft(player1);
-		gameRoot.setRight(player2);
-		gameRoot.setBottom(buttonView.getButtonView().buttonGameViewBuilder());
+		gameRoot.setLeft(player.Player.getPlayerView().playerLeftViewBuilder());
+		gameRoot.setRight(player.Player.getPlayerView().playerRightViewBuilder()); //TODO: Playerviews anschauen
+		bottomBox = new VBox(10);
+		bottomBox.setAlignment(Pos.CENTER);
+		
+		onRow = new Label(gameModel.isRedMove() ? "Player 1 Is on the Row" : "Player 2 turn");
+		
+		
+		bottomBox.getChildren().addAll(onRow, buttonView.getButtonView().buttonGameViewBuilder());
+		gameRoot.setBottom(bottomBox);
 
 		gameRoot.setCenter(gameGrid.createBoard());
+		gameRoot.setAlignment(gameGrid.createBoard(), Pos.BOTTOM_CENTER);
 		homeRoot.setId("background_home");
 
-		// TODO: idk why its not working -_-
-		BorderPane.setAlignment(centerPane, Pos.BOTTOM_CENTER);
+		
 
 		gameRoot.setTop(menuBar);
 
@@ -96,8 +106,8 @@ public class gameView {
 
 		// Setting Scene
 
-		scene = new Scene(gameRoot, 900, 500);
-		Scene homeScene = new Scene(homeRoot, 900, 500);
+		scene = new Scene(gameRoot, 900, 550);
+		Scene homeScene = new Scene(homeRoot, 900, 550);
 		
 		
 		
@@ -170,20 +180,18 @@ public class gameView {
 		this.homeRoot = homeRoot;
 	}
 
-	public Label getLblplayer1() {
-		return lblplayer1;
+	public Label getOnRow() {
+		return onRow;
 	}
 
-	public void setLblplayer1(Label lblplayer1) {
-		lblplayer1 = lblplayer1;
+	public void setOnRow(Label onRow) {
+		this.onRow = onRow;
 	}
+	
+	
 
-	public Label getLblplayer2() {
-		return lblplayer2;
-	}
 
-	public void setLblplayer2(Label lblplayer2) {
-		lblplayer2 = lblplayer2;
-	}
+	
+	
 
 }

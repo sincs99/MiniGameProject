@@ -6,8 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 import model.Disc;
 import model.gameModel;
-import player.Player1;
-import player.Player2;
+import player.Player;
 import view.HomeScreen;
 import view.buttonView;
 import view.gameGrid;
@@ -19,12 +18,16 @@ public class gameController extends gameGrid {
 	private gameView view;
 	private gameModel model;
 
-	protected Player1 player1;
-	protected Player2 player2;
+	protected Player player1;
+	
+	private static gameView sView;
 
 	public gameController(gameView view, gameModel model) {
 		this.view = view;
 		this.model = model;
+		
+		//MVC umgehung für Conditional refresh
+		gameController.setsView(view);
 
 		view.getMenuBar().getBlue().setOnAction(e -> {
 			gameModel.setGameBoard(Color.CORNFLOWERBLUE);
@@ -59,6 +62,7 @@ public class gameController extends gameGrid {
 
 		view.getMenuBar().getColor1().setOnAction(e -> {
 			Disc.setC1(Color.RED);
+			//Player1.setCircleColor(Color.RED);
 			this.refreshGameBoard();
 		});
 
@@ -74,6 +78,7 @@ public class gameController extends gameGrid {
 
 		view.getMenuBar().getColor4().setOnAction(e -> {
 			Disc.setC2(Color.GREEN);
+			
 			this.refreshGameBoard();
 		});
 
@@ -81,9 +86,13 @@ public class gameController extends gameGrid {
 			System.out.println("Fired");
 
 			HomeScreen.getHomeScreen().setPlayerName();
-			view.getLblplayer1().setText(HomeScreen.getHomeScreen().getPlayer1());
-			view.getLblplayer2().setText(HomeScreen.getHomeScreen().getPlayer2());
+			
+			player.Player.getPlayerView().getLblplayer1().setText(HomeScreen.getHomeScreen().getPlayer1());
+			
+			player.Player.getPlayerView().getLblplayer2().setText(HomeScreen.getHomeScreen().getPlayer2());
+			
 			System.out.println(HomeScreen.getHomeScreen().getPlayer1());
+			
 			view.changeScene();
 
 		});
@@ -104,9 +113,27 @@ public class gameController extends gameGrid {
 	private void refreshGameBoard() {
 		view.getRoot().setCenter(null);
 		view.getRoot().setCenter(createBoard());
-		// view.getCenterPane().getChildren().add(null);
-		// view.getCenterPane().getChildren().add(gameGrid.createBoard());
+		view.getRoot().setLeft(null);
+		view.getRoot().setRight(null);
+		view.getRoot().setRight(player.Player.getPlayerView().playerRightViewBuilder());
+		view.getRoot().setLeft(player.Player.getPlayerView().playerLeftViewBuilder());
+		
+		
+		
+		//refreshCircle();
+		
 
 	}
+
+	public static gameView getsView() {
+		return sView;
+	}
+
+	public static void setsView(gameView sView) {
+		gameController.sView = sView;
+	}
+	
+	
+	
 
 }
