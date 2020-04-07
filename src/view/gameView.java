@@ -10,10 +10,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import model.gameModel;
 import player.Player;
 
@@ -26,14 +28,15 @@ public class gameView {
 	private BorderPane homeRoot;
 	private Scene scene;
 	private Label onRow;
-	private VBox bottomBox;
-	//private VBox player1, player2;
+	private VBox bottomBox, topBox;
+	public static final int SPACER_HEIGHT = 10;
+	private Region upperSpacer, lowerSpacer;
+	// private VBox player1, player2;
 
 	private StackPane centerPane;
 
-	//Labels moved to Player
-	//protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
-	
+	// Labels moved to Player
+	// protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
 
 	public gameView(Stage stage, gameModel model) {
 		this.stage = stage;
@@ -41,41 +44,38 @@ public class gameView {
 		this.model = model;
 		this.menuBar = new topMenuBar();
 
-
 		// Boxing
 
 		gameRoot = new BorderPane();
 		homeRoot = new BorderPane();
 
-		//player2 = new VBox(10);
-		//player1 = new VBox(10);
-		
-		//player1.setPadding(new Insets(10,10,10,10));
-		//player2.setPadding(new Insets(10,10,10,10));
+		// player2 = new VBox(10);
+		// player1 = new VBox(10);
+
+		// player1.setPadding(new Insets(10,10,10,10));
+		// player2.setPadding(new Insets(10,10,10,10));
 
 		centerPane = new StackPane();
 
-		// BorderPane homeScreen = new BorderPane();
-
-		// Labels
-
+//		// BorderPane homeScreen = new BorderPane();
+//
+//		// Labels
+//
 //		this.lblplayer1 = new Label();
 //		this.lblplayer1.setId("playerText");
 //
 //		this.lblplayer2 = new Label();
 //		this.lblplayer2.setId("playerText");
-
-		// Building the Boxes
-
-		//player1.getChildren().addAll(lblplayer1);
-		//player1.getChildren().addAll(Player1.getPlayerView().playerViewBuilder());
-		//player1.setPrefWidth(200);
-		
-
-		//player2.getChildren().addAll(lblplayer2);
-		//player2.setPrefWidth(200);
-
-		
+//
+//		// Building the Boxes
+//
+//		player1.getChildren().addAll(lblplayer1);
+//		player1.getChildren().addAll(Player1.getPlayerView().playerViewBuilder());
+//		player1.setPrefWidth(200);
+//		
+//
+//		player2.getChildren().addAll(lblplayer2);
+//		player2.setPrefWidth(200);
 
 		// Setting root Objects
 
@@ -84,23 +84,34 @@ public class gameView {
 		homeRoot.setPadding(new Insets(0, 0, 10, 0));
 
 		gameRoot.setLeft(player.Player.getPlayerView().playerLeftViewBuilder());
-		gameRoot.setRight(player.Player.getPlayerView().playerRightViewBuilder()); //TODO: Playerviews anschauen
+		gameRoot.setRight(player.Player.getPlayerView().playerRightViewBuilder()); // TODO: Playerviews anschauen
 		bottomBox = new VBox(10);
 		bottomBox.setAlignment(Pos.CENTER);
-		
+
 		onRow = new Label(gameModel.isRedMove() ? "Player 1 Is on the Row" : "Player 2 turn");
-		
-		
+
 		bottomBox.getChildren().addAll(onRow, buttonView.getButtonView().buttonGameViewBuilder());
 		gameRoot.setBottom(bottomBox);
 
 		gameRoot.setCenter(gameGrid.createBoard());
-		gameRoot.setAlignment(gameGrid.createBoard(), Pos.BOTTOM_CENTER);
+		// gameRoot.setAlignment(gameGrid.createBoard(), Pos.BOTTOM_CENTER);
 		homeRoot.setId("background_home");
 
-		
+		upperSpacer = new Region();
+		lowerSpacer = new Region();
 
-		gameRoot.setTop(menuBar);
+		upperSpacer.setPrefHeight(SPACER_HEIGHT);
+		lowerSpacer.setPrefHeight(SPACER_HEIGHT);
+		topBox = new VBox();
+		topBox.setAlignment(Pos.CENTER);
+		
+		
+		//TODO: Build a count only for testing purposes
+		Label testLabel = new Label("0:0");
+
+		topBox.getChildren().addAll(menuBar, upperSpacer, onRow, lowerSpacer);
+
+		gameRoot.setTop(topBox);
 
 		gameRoot.setPadding(new Insets(0, 0, 10, 0));
 
@@ -108,12 +119,10 @@ public class gameView {
 
 		scene = new Scene(gameRoot, 900, 550);
 		Scene homeScene = new Scene(homeRoot, 900, 550);
-		
-		
-		
+
 		homeScene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
 		scene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
-		
+
 		stage.setScene(homeScene);
 //		buttonView.getBtnNewGame().setOnAction(e->{
 //			System.out.println("Fired");
@@ -187,11 +196,5 @@ public class gameView {
 	public void setOnRow(Label onRow) {
 		this.onRow = onRow;
 	}
-	
-	
-
-
-	
-	
 
 }
