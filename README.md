@@ -28,6 +28,9 @@ Two people taking turns on the same computer
 | Name | Subject |
 | ------ | ------ |
 | Pascal Konezciny | WIVZ 1.51 Software Engineering |
+| André Kaufmann | WIVZ 1.51 Software Engineering |
+| Sy-Min La | WIVZ 1.51 Software Engineering |
+
 
 
 

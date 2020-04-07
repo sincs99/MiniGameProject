@@ -27,13 +27,14 @@ public class gameView {
 	private BorderPane gameRoot;
 	private BorderPane homeRoot;
 	private Scene scene;
-	private Label onRow;
+	private Label onRow, startText, resultL, resultR, resultFormat;
 	private VBox bottomBox, topBox;
 	public static final int SPACER_HEIGHT = 10;
 	private Region upperSpacer, lowerSpacer;
-	// private VBox player1, player2;
+	private HBox startNameBox, resultBox;
 
 	private StackPane centerPane;
+
 
 	// Labels moved to Player
 	// protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
@@ -87,10 +88,10 @@ public class gameView {
 		gameRoot.setRight(player.Player.getPlayerView().playerRightViewBuilder()); // TODO: Playerviews anschauen
 		bottomBox = new VBox(10);
 		bottomBox.setAlignment(Pos.CENTER);
+		
 
-		onRow = new Label(gameModel.isRedMove() ? "Player 1 Is on the Row" : "Player 2 turn");
 
-		bottomBox.getChildren().addAll(onRow, buttonView.getButtonView().buttonGameViewBuilder());
+		bottomBox.getChildren().addAll(buttonView.getButtonView().buttonGameViewBuilder());
 		gameRoot.setBottom(bottomBox);
 
 		gameRoot.setCenter(gameGrid.createBoard());
@@ -107,9 +108,32 @@ public class gameView {
 		
 		
 		//TODO: Build a count only for testing purposes
-		Label testLabel = new Label("0:0");
+		Label testLabel = new Label();
+		String t = String.valueOf(gameModel.getCountL());
+		testLabel.setText(t);
+		
+		
+		testLabel.setId("result");
+		
+		startNameBox = new HBox();
+		resultBox = new HBox();
+		
 
-		topBox.getChildren().addAll(menuBar, upperSpacer, onRow, lowerSpacer);
+		onRow = new Label();
+		startText = new Label(" is first!");
+		resultL = new Label("0"); //TODO: Change null
+		resultR = new Label("0"); //TODO: Change null
+		resultFormat = new Label(" : ");
+		
+		
+		resultBox.getChildren().addAll(resultL, resultFormat, resultR);
+		resultBox.setAlignment(Pos.CENTER);
+		
+		
+		startNameBox.getChildren().addAll(onRow, startText);
+		startNameBox.setAlignment(Pos.CENTER);
+
+		topBox.getChildren().addAll(menuBar, upperSpacer, resultBox, startNameBox, lowerSpacer);
 
 		gameRoot.setTop(topBox);
 
@@ -117,7 +141,7 @@ public class gameView {
 
 		// Setting Scene
 
-		scene = new Scene(gameRoot, 900, 550);
+		scene = new Scene(gameRoot, 900, 650);
 		Scene homeScene = new Scene(homeRoot, 900, 550);
 
 		homeScene.getStylesheets().add(getClass().getResource("/resources/Stylesheet.css").toExternalForm());
@@ -196,5 +220,33 @@ public class gameView {
 	public void setOnRow(Label onRow) {
 		this.onRow = onRow;
 	}
+
+	public Label getStartText() {
+		return startText;
+	}
+
+	public void setStartText(Label startText) {
+		this.startText = startText;
+	}
+
+	public Label getResultL() {
+		return resultL;
+	}
+
+	public void setResultL(Label resultL) {
+		this.resultL = resultL;
+	}
+
+	public Label getResultR() {
+		return resultR;
+	}
+
+	public void setResultR(Label resultR) {
+		this.resultR = resultR;
+	}
+	
+	
+	
+	
 
 }

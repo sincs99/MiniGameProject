@@ -32,6 +32,7 @@ public class gameModel extends gameGrid{
 	
 	protected static boolean redMove = true;
 	private static Disc[][] grid;
+	private static int countL, countR;
 	
 	
 
@@ -177,7 +178,11 @@ public class gameModel extends gameGrid{
 	
 	
 	protected static void gameOver() {
-		System.out.println("Winner: " + (redMove ? " RED! " : "Yellow" ));
+		//Syso is only for control purposes
+		
+		System.out.println("Winner: " + (redMove ? countL++ + "Red" : countR++ + "Yellow" ));
+		System.out.println("Red: " +countL);
+		System.out.println("Yellow: " +countR);
 	}
 
 
@@ -213,6 +218,24 @@ public class gameModel extends gameGrid{
 	public static void setRedMove(boolean redMove) {
 		gameModel.redMove = redMove;
 	}
+
+	public static int getCountL() {
+		return countL;
+	}
+
+	public static void setCountL(int countL) {
+		gameModel.countL = countL;
+	}
+
+	public static int getCountR() {
+		return countR;
+	}
+
+	public static void setCountR(int countR) {
+		gameModel.countR = countR;
+	}
+	
+	
 	
 	
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import gameminiproject.gameController;
 import javafx.geometry.Point2D;
+import view.HomeScreen;
 
 public class CheckLogic {
 	
@@ -17,8 +18,15 @@ public class CheckLogic {
 	protected static boolean checkMove(List<Point2D> points) {
 		
 		
-		gameController.getsView().getOnRow().setText(gameModel.isRedMove() ? "Player 2 Is on the Row" : "Player 1 Is on the Row");
+		gameController.getsView().getOnRow().
+		setText(gameModel.isRedMove() ? HomeScreen.getHomeScreen().getPlayer2() + " is on the Row" : HomeScreen.getHomeScreen().getPlayer1()+" is on the Row");
+		gameController.getsView().getStartText().setText(null);
 		
+		String s = String.valueOf(gameModel.getCountL());
+		String u = String.valueOf(gameModel.getCountR());
+		
+		gameController.getsView().getResultL().setText(s);
+		gameController.getsView().getResultR().setText(u);
 		
 		int chain = 0;
 		

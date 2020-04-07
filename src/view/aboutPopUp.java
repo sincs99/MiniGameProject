@@ -26,10 +26,11 @@ public class aboutPopUp {
 	public static void createPopUp() {
 		
 		
-		aboutText = new Label("Developer: Pascal Konezciny\nSupervisor: Bradley Richards");
+		aboutText = new Label("Developer: \nPascal Konezciny\nAndré Kaufmann\nSy-Min La\n\nSupervisor: \nBradley Richards");
 		heading = new Label("Java Mini Project #1\n\n");
 		heading.setId("h1");
 		ok = new Button ("Close");
+		
 		
 		
 		buttonBox = new VBox();
@@ -39,6 +40,7 @@ public class aboutPopUp {
 		vText = new VBox();
 		
 		vText.getChildren().addAll(heading, aboutText);
+		vText.setAlignment(Pos.CENTER);
 		
 		mainPane = new BorderPane();
 		mainPane.setPadding(new Insets(10, 10, 10, 10));
@@ -47,7 +49,7 @@ public class aboutPopUp {
 		
 		mainPane.setBottom(buttonBox);
 		
-		Scene popupScene = new Scene(mainPane, 250, 150);
+		Scene popupScene = new Scene(mainPane, 300, 250);
 		
 		Stage popUp = new Stage();
 		

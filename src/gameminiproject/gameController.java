@@ -94,8 +94,13 @@ public class gameController extends gameGrid {
 			player.Player.getPlayerView().getLblplayer2().setText(HomeScreen.getHomeScreen().getPlayer2());
 
 			System.out.println(HomeScreen.getHomeScreen().getPlayer1());
-
+			
+			view.getOnRow().setText(HomeScreen.getHomeScreen().getPlayer1());
+			
+			
 			view.changeScene();
+			
+			
 
 		});
 
