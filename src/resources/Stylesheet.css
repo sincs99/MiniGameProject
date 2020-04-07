@@ -1,85 +1,140 @@
 #exit{
     -fx-background-color: 
         #090a0c,
-        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#38424b 0.0%, #1f2429 20.0%, #191d22 100.0%),
         linear-gradient(#20262b, #191d22),
-        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
-    -fx-background-radius: 5,4,3,5;
-    -fx-background-insets: 0,1,2,0;
+        radial-gradient(center 50.0% 0.0%, radius 100.0%, rgba(114.0,131.0,148.0,0.9), rgba(255.0,255.0,255.0,0.0));
+    -fx-background-radius: 5.0,4.0,3.0,5.0;
+    -fx-background-insets: 0.0,1.0,2.0,0.0;
     -fx-text-fill: white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );
     -fx-font-family: "Arial";
     -fx-text-fill: linear-gradient(white, #d0d0d0);
-    -fx-font-size: 12px;
-    -fx-padding: 10 20 10 20;
+    -fx-font-size: 12.0px;
+    -fx-padding: 10.0 20.0 10.0 20.0;
+    
 }
 
 #exit Text {
-    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
+    -fx-effect: dropshadow( one-pass-box , rgba(0.0,0.0,0.0,0.9) , 1.0, 0.0 , 0.0 , 1.0 );
 }
 #exit:hover{
     -fx-background-color: 
         #090a0c,
-        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#38424b 0.0%, #1f2429 20.0%, #191d22 100.0%),
         linear-gradient(#20262b, #191d22),
-        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
-    -fx-background-radius: 5,4,3,5;
-    -fx-background-insets: 0,1,2,0;
+        radial-gradient(center 50.0% 0.0%, radius 100.0%, rgba(114.0,131.0,148.0,0.9), rgba(255.0,255.0,255.0,0.0));
+    -fx-background-radius: 5.0,4.0,3.0,5.0;
+    -fx-background-insets: 0.0,1.0,2.0,0.0;
     -fx-text-fill: white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );
     -fx-font-family: "Arial";
     -fx-text-fill: linear-gradient(red, black);
-    -fx-font-size: 12px;
-    -fx-padding: 10 20 10 20;
+    -fx-font-size: 12.0px;
+    -fx-padding: 10.0 20.0 10.0 20.0;
 }
 
 #button{
     -fx-background-color: 
         #090a0c,
-        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#38424b 0.0%, #1f2429 20.0%, #191d22 100.0%),
         linear-gradient(#20262b, #191d22),
-        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
-    -fx-background-radius: 5,4,3,5;
-    -fx-background-insets: 0,1,2,0;
+        radial-gradient(center 50.0% 0.0%, radius 100.0%, rgba(114.0,131.0,148.0,0.9), rgba(255.0,255.0,255.0,0.0));
+    -fx-background-radius: 5.0,4.0,3.0,5.0;
+    -fx-background-insets: 0.0,1.0,2.0,0.0;
     -fx-text-fill: white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );
     -fx-font-family: "Arial";
     -fx-text-fill: linear-gradient(white, #d0d0d0);
-    -fx-font-size: 12px;
-    -fx-padding: 10 20 10 20;
+    -fx-font-size: 12.0px;
+    -fx-padding: 10.0 20.0 10.0 20.0;
 }
 
 #button Text {
-    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.9) , 1, 0.0 , 0 , 1 );
+    -fx-effect: dropshadow( one-pass-box , rgba(0.0,0.0,0.0,0.9) , 1.0, 0.0 , 0.0 , 1.0 );
 }
 #button:hover{
     -fx-background-color: 
         #090a0c,
-        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#38424b 0.0%, #1f2429 20.0%, #191d22 100.0%),
         linear-gradient(#20262b, #191d22),
-        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
-    -fx-background-radius: 5,4,3,5;
-    -fx-background-insets: 0,1,2,0;
+        radial-gradient(center 50.0% 0.0%, radius 100.0%, rgba(114.0,131.0,148.0,0.9), rgba(255.0,255.0,255.0,0.0));
+    -fx-background-radius: 5.0,4.0,3.0,5.0;
+    -fx-background-insets: 0.0,1.0,2.0,0.0;
     -fx-text-fill: white;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );
     -fx-font-family: "Arial";
     -fx-text-fill: linear-gradient(black, #424242);
-    -fx-font-size: 12px;
-    -fx-padding: 10 20 10 20;
+    -fx-font-size: 12.0px;
+    -fx-padding: 10.0 20.0 10.0 20.0;
 }
 
 
 
 #playerText{
 	-fx-font-family: "Arial";
-	-fx-font-size: 20px;
+	-fx-font-size: 20.0px;
 	-fx-text-fill:#424242;
 	
 }
 
 #h1{
-	-fx-font-size: 16px;
+	-fx-font-size: 16.0px;
 	-fx-font-weight: bold;
+}
+
+#h1_home{
+	-fx-font-size: 54px;
+	-fx-font-family: "Times New Roman", sans-serif;
+	-fx-text-fill: #ffffff;
+	-fx-font-weight: 300;
+	-fx-margin-top: 5px; 
+	-fx-margin-bottom: 0px;
+    -fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );
+	-fx-text-fill: linear-gradient(white, #4A708B);
+	
+	
+	
+	}
+	
+	#subTitle{
+	-fx-font-family: "Times New Roman", sans-serif;
+	-fx-font-size: 18px;
+	-fx-font-weight: lighter;
+	-fx-font-variant: normal;
+	-fx-text-transform: uppercase;
+	-fx-text-fill: #666666;
+	-fx-margin-top: 10px;
+	-fx-text-align: center!important;
+	-fx-letter-spacing: 0.3px;
+	-fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );
+	-fx-text-fill: linear-gradient(white, #4A708B);
+	}
+
+
+
+#textfield{
+	 -fx-background-color: 
+        #090a0c,
+        linear-gradient(#38424b 0.0%, #1f2429 20.0%, #191d22 100.0%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50.0% 0.0%, radius 100.0%, rgba(114.0,131.0,148.0,0.9), rgba(255.0,255.0,255.0,0.0));
+    -fx-background-radius: 5.0,4.0,3.0,5.0;
+    -fx-background-insets: 0.0,1.0,2.0,0.0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0.0,0.0,0.0,0.6) , 5.0, 0.0 , 0.0 , 1.0 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12.0px;
+    -fx-padding: 10.0 20.0 10.0 20.0;
+}
+
+#background_home{
+	 -fx-background-image: url("/resources/bghome.jpg");
+}
+
+#label_home{
+	
 }
 
 

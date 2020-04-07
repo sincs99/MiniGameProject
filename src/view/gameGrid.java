@@ -33,6 +33,8 @@ public class gameGrid {
 		gameRoot.setPadding(new Insets(10, 10, 10, 10));
 
 		gameRoot.setPrefWidth(400);
+		
+		
 
 		return gameRoot;
 	}
