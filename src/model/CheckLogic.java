@@ -22,11 +22,7 @@ public class CheckLogic {
 		setText(gameModel.isRedMove() ? HomeScreen.getHomeScreen().getPlayer2() + " is on the Row" : HomeScreen.getHomeScreen().getPlayer1()+" is on the Row");
 		gameController.getsView().getStartText().setText(null);
 		
-		String s = String.valueOf(gameModel.getCountL());
-		String u = String.valueOf(gameModel.getCountR());
-		
-		gameController.getsView().getResultL().setText(s);
-		gameController.getsView().getResultR().setText(u);
+
 		
 		int chain = 0;
 		

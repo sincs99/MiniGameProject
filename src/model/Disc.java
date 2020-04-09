@@ -7,8 +7,8 @@ import view.gameGrid;
 public class Disc extends Circle {
 
 	protected final boolean red;
-	protected static Color c1 = Color.DARKCYAN;
-	protected static Color c2 = Color.MEDIUMPURPLE;
+	protected static Color c1 = Color.DARKRED;
+	protected static Color c2 = Color.YELLOWGREEN;
 
 	public Disc(boolean red) {
 		super(view.gameGrid.DISC_SIZE / 2, red ? c1 : c2);

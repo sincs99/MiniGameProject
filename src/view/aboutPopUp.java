@@ -58,7 +58,8 @@ public class aboutPopUp {
 		
 		//System.out.println("Test PopUp");
 		ok.setOnAction(e-> popUp.close());
-
+		
+		
 		popUp.show();
 		
 		

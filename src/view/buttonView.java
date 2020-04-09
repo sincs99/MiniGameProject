@@ -33,6 +33,7 @@ public class buttonView extends HBox {
 		btnGamePane = new HBox(8);
 		
 		btnNewGame = new Button ("New Game");
+		btnNewGame.setId("button");
 		
 		exit = new Button("Exit");
 		exit.setId("exit");

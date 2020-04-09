@@ -95,7 +95,7 @@ public class gameView {
 		gameRoot.setBottom(bottomBox);
 
 		gameRoot.setCenter(gameGrid.createBoard());
-		// gameRoot.setAlignment(gameGrid.createBoard(), Pos.BOTTOM_CENTER);
+		gameRoot.setId("background_game");
 		homeRoot.setId("background_home");
 
 		upperSpacer = new Region();
@@ -124,6 +124,9 @@ public class gameView {
 		resultL = new Label("0"); //TODO: Change null
 		resultR = new Label("0"); //TODO: Change null
 		resultFormat = new Label(" : ");
+		resultL.setId("result");
+		resultR.setId("result");
+		resultFormat.setId("result");
 		
 		
 		resultBox.getChildren().addAll(resultL, resultFormat, resultR);

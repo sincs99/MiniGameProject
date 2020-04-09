@@ -10,6 +10,7 @@ import model.Disc;
 import model.gameModel;
 import player.Player;
 import view.HomeScreen;
+import view.WinPopUp;
 import view.buttonView;
 import view.gameGrid;
 import view.gameView;
@@ -32,13 +33,13 @@ public class gameController extends gameGrid {
 		gameController.setsView(view);
 
 		view.getMenuBar().getBlue().setOnAction(e -> {
-			gameModel.setGameBoard(Color.CORNFLOWERBLUE);
+			gameModel.setGameBoard(Color.BLUE);
 
 			this.refreshGameBoard();
 		});
 
 		view.getMenuBar().getRed().setOnAction(e -> {
-			gameModel.setGameBoard(Color.DARKRED);
+			gameModel.setGameBoard(Color.INDIANRED);
 
 			this.refreshGameBoard();
 		});
@@ -64,12 +65,12 @@ public class gameController extends gameGrid {
 
 		view.getMenuBar().getColor1().setOnAction(e -> {
 			Disc.setC1(Color.RED);
-			// Player1.setCircleColor(Color.RED);
+			
 			this.refreshGameBoard();
 		});
 
 		view.getMenuBar().getColor2().setOnAction(e -> {
-			Disc.setC1(Color.BLUE);
+			Disc.setC1(Color.CORNFLOWERBLUE);
 			this.refreshGameBoard();
 		});
 
@@ -114,6 +115,11 @@ public class gameController extends gameGrid {
 			this.refreshGameBoard();
 
 		});
+		
+
+		
+		
+
 
 	}
 
