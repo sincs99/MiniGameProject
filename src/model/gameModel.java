@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import gameminiproject.gameController;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.geometry.Point2D;
@@ -17,6 +18,8 @@ import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
+import view.HomeScreen;
+import view.WinPopUp;
 import view.gameGrid;
 
 public class gameModel extends gameGrid{
@@ -28,10 +31,11 @@ public class gameModel extends gameGrid{
 	protected static int rowSize = 6;
 	protected static int colSize = 7;
 
-	protected static Color GAME_BOARD = Color.BLUEVIOLET;
+	protected static Color GAME_BOARD = Color.MIDNIGHTBLUE;
 	
 	protected static boolean redMove = true;
 	private static Disc[][] grid;
+	private static int countL, countR;
 	
 	
 
@@ -154,7 +158,7 @@ public class gameModel extends gameGrid{
 		List<Point2D> dia1 = new ArrayList <Point2D> ();
 		List<Point2D> dia2 = new ArrayList <Point2D> ();
 		Point2D tL = new Point2D(col -3, row -3);
-		Point2D bL = new Point2D (col -3, row -3);
+		Point2D bL = new Point2D (col -3, row +3);
 		v = IntStream.rangeClosed(row -3, row+3).mapToObj(r -> new Point2D(col, r)).collect(Collectors.toList());
 		h = IntStream.rangeClosed(col - 3, col + 3).mapToObj(c -> new Point2D(c, row)).collect(Collectors.toList());
 		dia1 = IntStream.rangeClosed(0, 6).mapToObj(g -> tL.add(g, g)).collect(Collectors.toList());
@@ -177,7 +181,33 @@ public class gameModel extends gameGrid{
 	
 	
 	protected static void gameOver() {
-		System.out.println("Winner: " + (redMove ? " RED! " : "Yellow" ));
+		//Syso is only for control purposes
+		
+		String p1 = HomeScreen.getHomeScreen().getPlayer1();
+		String p2 = HomeScreen.getHomeScreen().getPlayer2();
+		
+		System.out.println("Winner: " + (redMove ? countL++ + "Red" : countR++ + "Yellow" ));
+		System.out.println("Red: " +countL);
+		System.out.println("Yellow: " +countR);
+		
+		System.out.println(p1);
+		
+
+		String s = String.valueOf(gameModel.getCountL());
+		String u = String.valueOf(gameModel.getCountR());
+		
+		gameController.getsView().getResultL().setText(s);
+		gameController.getsView().getResultR().setText(u);
+		
+		if (redMove) {
+			WinPopUp.createPopUp(p1 + " won the game","Congratulations " +p1+ " you won the game!");
+			
+			
+		}else {
+			WinPopUp.createPopUp(p2 + " won the game", "Congratulations " +p2+ " you won the game!");
+		}
+		
+		
 	}
 
 
@@ -213,6 +243,24 @@ public class gameModel extends gameGrid{
 	public static void setRedMove(boolean redMove) {
 		gameModel.redMove = redMove;
 	}
+
+	public static int getCountL() {
+		return countL;
+	}
+
+	public static void setCountL(int countL) {
+		gameModel.countL = countL;
+	}
+
+	public static int getCountR() {
+		return countR;
+	}
+
+	public static void setCountR(int countR) {
+		gameModel.countR = countR;
+	}
+	
+	
 	
 	
 

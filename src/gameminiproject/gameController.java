@@ -1,6 +1,7 @@
 package gameminiproject;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Pos;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
@@ -10,6 +11,7 @@ import model.Disc;
 import model.gameModel;
 import player.Player;
 import view.HomeScreen;
+import view.WinPopUp;
 import view.buttonView;
 import view.gameGrid;
 import view.gameView;
@@ -21,6 +23,8 @@ public class gameController extends gameGrid {
 	private gameModel model;
 
 	protected Player player1;
+	
+	private static SimpleBooleanProperty trigger = new SimpleBooleanProperty ();
 
 	private static gameView sView;
 
@@ -32,13 +36,13 @@ public class gameController extends gameGrid {
 		gameController.setsView(view);
 
 		view.getMenuBar().getBlue().setOnAction(e -> {
-			gameModel.setGameBoard(Color.CORNFLOWERBLUE);
+			gameModel.setGameBoard(Color.BLUE);
 
 			this.refreshGameBoard();
 		});
 
 		view.getMenuBar().getRed().setOnAction(e -> {
-			gameModel.setGameBoard(Color.DARKRED);
+			gameModel.setGameBoard(Color.INDIANRED);
 
 			this.refreshGameBoard();
 		});
@@ -64,12 +68,12 @@ public class gameController extends gameGrid {
 
 		view.getMenuBar().getColor1().setOnAction(e -> {
 			Disc.setC1(Color.RED);
-			// Player1.setCircleColor(Color.RED);
+			
 			this.refreshGameBoard();
 		});
 
 		view.getMenuBar().getColor2().setOnAction(e -> {
-			Disc.setC1(Color.BLUE);
+			Disc.setC1(Color.CORNFLOWERBLUE);
 			this.refreshGameBoard();
 		});
 
@@ -94,8 +98,13 @@ public class gameController extends gameGrid {
 			player.Player.getPlayerView().getLblplayer2().setText(HomeScreen.getHomeScreen().getPlayer2());
 
 			System.out.println(HomeScreen.getHomeScreen().getPlayer1());
-
+			
+			view.getOnRow().setText(HomeScreen.getHomeScreen().getPlayer1());
+			
+			
 			view.changeScene();
+			
+			
 
 		});
 
@@ -109,6 +118,18 @@ public class gameController extends gameGrid {
 			this.refreshGameBoard();
 
 		});
+		
+		trigger.addListener(c->{
+			this.refreshGameBoard();
+		});
+		
+		
+		
+		
+
+		
+		
+
 
 	}
 
@@ -132,5 +153,11 @@ public class gameController extends gameGrid {
 	public static void setsView(gameView sView) {
 		gameController.sView = sView;
 	}
+	
+	public static void triggerRefresh() {
+		trigger.setValue(!trigger.getValue());
+	}
+	
+
 
 }

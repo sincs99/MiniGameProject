@@ -80,7 +80,8 @@
 
 #h1{
 	-fx-font-size: 16.0px;
-	-fx-font-weight: bold;
+    -fx-font-weight: bold;
+    -fx-font-style: inherit;
 }
 
 #h1_home{
@@ -133,8 +134,20 @@
 	 -fx-background-image: url("/resources/bghome.jpg");
 }
 
+#background_game{
+
+  
+    
+}
+
 #label_home{
 	
+}
+
+#result{
+    -fx-font-family: 'Times New Roman', Times, serif;
+    -fx-font-size: 60px;
+    
 }
 
 
