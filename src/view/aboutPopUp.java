@@ -53,6 +53,8 @@ public class aboutPopUp {
 		
 		Stage popUp = new Stage();
 		
+		popupScene.getStylesheets().add(WinPopUp.class.getClass().getResource("/resources/Stylesheet.css").toExternalForm());
+		
 		popUp.setScene(popupScene);
 		popUp.setTitle("About Us");
 		

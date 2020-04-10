@@ -1,5 +1,6 @@
 package view;
 
+import gameminiproject.gameController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -28,7 +29,7 @@ public class WinPopUp {
 		newGame = new Button("New Game");
 		
 		newGame.setOnAction(e->{
-			
+			gameController.triggerRefresh();
 			
 			winPopUp.close();
 		}); //TODO: change to start new game
@@ -56,6 +57,8 @@ public class WinPopUp {
 		
 
 		Scene popupScene = new Scene(mainPane, 300, 250);
+		
+		popupScene.getStylesheets().add(WinPopUp.class.getClass().getResource("/resources/Stylesheet.css").toExternalForm());
 
 		winPopUp.setScene(popupScene);
 

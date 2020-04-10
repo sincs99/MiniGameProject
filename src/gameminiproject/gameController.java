@@ -1,6 +1,7 @@
 package gameminiproject;
 
 import javafx.application.Platform;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Pos;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
@@ -22,6 +23,8 @@ public class gameController extends gameGrid {
 	private gameModel model;
 
 	protected Player player1;
+	
+	private static SimpleBooleanProperty trigger = new SimpleBooleanProperty ();
 
 	private static gameView sView;
 
@@ -116,6 +119,13 @@ public class gameController extends gameGrid {
 
 		});
 		
+		trigger.addListener(c->{
+			this.refreshGameBoard();
+		});
+		
+		
+		
+		
 
 		
 		
@@ -143,5 +153,11 @@ public class gameController extends gameGrid {
 	public static void setsView(gameView sView) {
 		gameController.sView = sView;
 	}
+	
+	public static void triggerRefresh() {
+		trigger.setValue(!trigger.getValue());
+	}
+	
+
 
 }
