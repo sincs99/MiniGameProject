@@ -31,7 +31,7 @@ public class gameModel extends gameGrid{
 	protected static int rowSize = 6;
 	protected static int colSize = 7;
 
-	protected static Color GAME_BOARD = Color.MIDNIGHTBLUE;
+	protected static Color gameBoard = Color.MIDNIGHTBLUE;
 	
 	protected static boolean redMove = true;
 	private static Disc[][] grid;
@@ -63,7 +63,7 @@ public class gameModel extends gameGrid{
 
 				form = Shape.subtract(form, c);
 
-				form.setFill(GAME_BOARD);
+				form.setFill(gameBoard);
 
 			}
 		}
@@ -200,11 +200,11 @@ public class gameModel extends gameGrid{
 		gameController.getsView().getResultR().setText(u);
 		
 		if (redMove) {
-			WinPopUp.createPopUp(p1 + " won the game","Congratulations " +p1+ " you won the game!");
+			WinPopUp.createPopUp(p1 + " won the game","Congratulations " +p1+ " won the game!");
 			
 			
 		}else {
-			WinPopUp.createPopUp(p2 + " won the game", "Congratulations " +p2+ " you won the game!");
+			WinPopUp.createPopUp(p2 + " won the game", "Congratulations " +p2+ " won the game!");
 		}
 		
 		
@@ -229,11 +229,11 @@ public class gameModel extends gameGrid{
 	}
 
 	public static Color getGameBoard() {
-		return GAME_BOARD;
+		return gameBoard;
 	}
 
 	public static void setGameBoard(Color GAME_BOARD) {
-		gameModel.GAME_BOARD = GAME_BOARD;
+		gameModel.gameBoard = GAME_BOARD;
 	}
 
 	public static boolean isRedMove() {
