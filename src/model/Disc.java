@@ -2,7 +2,6 @@ package model;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import view.gameGrid;
 
 public class Disc extends Circle {
 

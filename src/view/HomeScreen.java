@@ -11,7 +11,7 @@ public class HomeScreen extends VBox {
 	private VBox v1 = new VBox(20);
 	private HBox h1 = new HBox(20);
 	private HBox h2 = new HBox(20);
-	private Label l1 = new Label("Please type Players Name");
+	private Label l1 = new Label("Please type Player Names");
 	private Label heading1 = new Label("four connect");
 	private Label p1 = new Label("Playername 1: ");
 	private Label p2 = new Label("Playername 2: ");

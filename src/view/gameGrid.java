@@ -18,13 +18,11 @@ public class gameGrid {
 	protected static Pane discPane = new Pane();
 
 	public static Parent createBoard() {
-		
-		
+
 		discPane.getChildren().clear();
 		gameRoot.getChildren().clear();
 
 		gameRoot.getChildren().add(discPane);
-		
 
 		Shape boardShape = gameModel.buildBoard();
 		gameRoot.getChildren().add(boardShape);
@@ -33,8 +31,6 @@ public class gameGrid {
 		gameRoot.setPadding(new Insets(10, 10, 10, 10));
 
 		gameRoot.setPrefWidth(400);
-		
-		
 
 		return gameRoot;
 	}

@@ -26,27 +26,23 @@ public class buttonView extends HBox {
 	private buttonView() {
 
 	}
-	
-	
+
 	public Parent buttonGameViewBuilder() {
-		
+
 		btnGamePane = new HBox(8);
-		
-		btnNewGame = new Button ("New Game");
+
+		btnNewGame = new Button("New Game");
 		btnNewGame.setId("button");
-		
+
 		exit = new Button("Exit");
 		exit.setId("exit");
 		exit.setOnAction(e -> {
 			Platform.exit();
 		});
-		
-		
+
 		btnGamePane.getChildren().addAll(btnNewGame, exit);
 		btnGamePane.setAlignment(Pos.CENTER);
 
-		
-		
 		return btnGamePane;
 	}
 
@@ -87,7 +83,7 @@ public class buttonView extends HBox {
 	}
 
 	public Button getBtnNewGame() {
-		
+
 		return btnNewGame;
 	}
 }

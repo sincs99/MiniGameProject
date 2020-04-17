@@ -35,7 +35,6 @@ public class gameView {
 
 	private StackPane centerPane;
 
-
 	// Labels moved to Player
 	// protected Label lblplayer1, lblplayer2, lblcards1, lblcards2;
 
@@ -88,8 +87,6 @@ public class gameView {
 		gameRoot.setRight(player.Player.getPlayerView().playerRightViewBuilder()); // TODO: Playerviews anschauen
 		bottomBox = new VBox(10);
 		bottomBox.setAlignment(Pos.CENTER);
-		
-
 
 		bottomBox.getChildren().addAll(buttonView.getButtonView().buttonGameViewBuilder());
 		gameRoot.setBottom(bottomBox);
@@ -105,34 +102,28 @@ public class gameView {
 		lowerSpacer.setPrefHeight(SPACER_HEIGHT);
 		topBox = new VBox();
 		topBox.setAlignment(Pos.CENTER);
-		
-		
-		//TODO: Build a count only for testing purposes
-		Label testLabel = new Label();
+
+		Label winCount = new Label();
 		String t = String.valueOf(gameModel.getCountL());
-		testLabel.setText(t);
-		
-		
-		testLabel.setId("result");
-		
+		winCount.setText(t);
+
+		winCount.setId("result");
+
 		startNameBox = new HBox();
 		resultBox = new HBox();
-		
 
 		onRow = new Label();
 		startText = new Label(" is first!");
-		resultL = new Label("0"); //TODO: Change null
-		resultR = new Label("0"); //TODO: Change null
+		resultL = new Label("0");
+		resultR = new Label("0");
 		resultFormat = new Label(" : ");
 		resultL.setId("result");
 		resultR.setId("result");
 		resultFormat.setId("result");
-		
-		
+
 		resultBox.getChildren().addAll(resultL, resultFormat, resultR);
 		resultBox.setAlignment(Pos.CENTER);
-		
-		
+
 		startNameBox.getChildren().addAll(onRow, startText);
 		startNameBox.setAlignment(Pos.CENTER);
 
@@ -247,9 +238,5 @@ public class gameView {
 	public void setResultR(Label resultR) {
 		this.resultR = resultR;
 	}
-	
-	
-	
-	
 
 }

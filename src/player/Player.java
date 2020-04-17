@@ -5,15 +5,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import model.Disc;
-import model.gameModel;
 import view.HomeScreen;
-import view.buttonView;
 import view.gameView;
 
 public class Player {

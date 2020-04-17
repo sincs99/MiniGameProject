@@ -23,8 +23,8 @@ public class gameController extends gameGrid {
 	private gameModel model;
 
 	protected Player player1;
-	
-	private static SimpleBooleanProperty trigger = new SimpleBooleanProperty ();
+
+	private static SimpleBooleanProperty trigger = new SimpleBooleanProperty();
 
 	private static gameView sView;
 
@@ -68,7 +68,7 @@ public class gameController extends gameGrid {
 
 		view.getMenuBar().getColor1().setOnAction(e -> {
 			Disc.setC1(Color.RED);
-			
+
 			this.refreshGameBoard();
 		});
 
@@ -89,7 +89,9 @@ public class gameController extends gameGrid {
 		});
 
 		buttonView.getButtonView().getBtnStartGame().setOnAction(e -> {
-			System.out.println("Fired");
+
+			// Only for testing purposes if event handler is working
+//			System.out.println("Fired"); 
 
 			HomeScreen.getHomeScreen().setPlayerName();
 
@@ -98,13 +100,10 @@ public class gameController extends gameGrid {
 			player.Player.getPlayerView().getLblplayer2().setText(HomeScreen.getHomeScreen().getPlayer2());
 
 			System.out.println(HomeScreen.getHomeScreen().getPlayer1());
-			
+
 			view.getOnRow().setText(HomeScreen.getHomeScreen().getPlayer1());
-			
-			
+
 			view.changeScene();
-			
-			
 
 		});
 
@@ -118,18 +117,10 @@ public class gameController extends gameGrid {
 			this.refreshGameBoard();
 
 		});
-		
-		trigger.addListener(c->{
+
+		trigger.addListener(c -> {
 			this.refreshGameBoard();
 		});
-		
-		
-		
-		
-
-		
-		
-
 
 	}
 
@@ -142,8 +133,6 @@ public class gameController extends gameGrid {
 		view.getRoot().setRight(player.Player.getPlayerView().playerRightViewBuilder());
 		view.getRoot().setLeft(player.Player.getPlayerView().playerLeftViewBuilder());
 
-		// refreshCircle();
-
 	}
 
 	public static gameView getsView() {
@@ -153,11 +142,9 @@ public class gameController extends gameGrid {
 	public static void setsView(gameView sView) {
 		gameController.sView = sView;
 	}
-	
+
 	public static void triggerRefresh() {
 		trigger.setValue(!trigger.getValue());
 	}
-	
-
 
 }

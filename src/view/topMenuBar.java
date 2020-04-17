@@ -12,41 +12,21 @@ import model.gameModel;
 
 public class topMenuBar extends MenuBar {
 
-	private Menu help, gameProperties, start, gameBoard, color, colorOfDisc, player1,player2;
-	private MenuItem rules, 
-						about, 
-						exit, 
-						newGame, 
-						sevenSix, 
-						fourFour, 
-						blue, 
-						red,
-						color1,
-						color2,
-						color3,
-						color4;
-	//public static ColorPicker colorOfBoard;
-
+	private Menu help, gameProperties, start, gameBoard, color, colorOfDisc, player1, player2;
+	private MenuItem about, exit, newGame, sevenSix, fourFour, blue, red, color1, color2, color3, color4;
+	// public static ColorPicker colorOfBoard;
 
 	public topMenuBar() {
-		
-		
 
-		//colorOfBoard = new ColorPicker();
-		//colorOfBoard.setValue(Color.DARKRED);
-		
-		//form.setFill(colorOfBoard.getValue());
-		
-		
-		
-		
-		
+		// colorOfBoard = new ColorPicker();
+		// colorOfBoard.setValue(Color.DARKRED);
+
+		// form.setFill(colorOfBoard.getValue());
 
 		help = new Menu("Help");
 		gameProperties = new Menu("Properties");
 		start = new Menu("File");
 
-		rules = new MenuItem("Rules");
 		about = new MenuItem("About");
 
 		about.setOnAction(e -> aboutPopUp.createPopUp());
@@ -54,18 +34,15 @@ public class topMenuBar extends MenuBar {
 		color = new Menu("Color");
 		blue = new MenuItem("Blue");
 		red = new MenuItem("Red");
-		//color.setOnAction(e->colorOfBoard);
-		
+		// color.setOnAction(e->colorOfBoard);
+
 		colorOfDisc = new Menu("Color of Chips");
 		player1 = new Menu("Color Player 1");
-		player2 = new Menu ("Color Player 2");
+		player2 = new Menu("Color Player 2");
 		color1 = new MenuItem("Color Rot");
 		color2 = new MenuItem("Color Blau");
 		color3 = new MenuItem("Color Gelb");
 		color4 = new MenuItem("Color Grün");
-		
-		
-		
 
 		exit = new MenuItem("Exit");
 		newGame = new MenuItem("New Game");
@@ -75,17 +52,15 @@ public class topMenuBar extends MenuBar {
 		gameBoard = new Menu("GameBoard");
 		sevenSix = new MenuItem("7x6");
 		fourFour = new MenuItem("4x4");
-		
-		//color.getItems().addAll(colorOfBoard);
-		
-		
-		
+
+		// color.getItems().addAll(colorOfBoard);
+
 		player1.getItems().addAll(color1, color2);
 		player2.getItems().addAll(color3, color4);
 
 		color.getItems().addAll(blue, red);
 		gameBoard.getItems().addAll(sevenSix, fourFour);
-		help.getItems().addAll(rules, about);
+		help.getItems().addAll(about);
 		gameProperties.getItems().addAll(color, gameBoard, player1, player2);
 		start.getItems().addAll(newGame, exit);
 
@@ -125,14 +100,6 @@ public class topMenuBar extends MenuBar {
 
 	public void setGameBoard(Menu gameBoard) {
 		this.gameBoard = gameBoard;
-	}
-
-	public MenuItem getRules() {
-		return rules;
-	}
-
-	public void setRules(MenuItem rules) {
-		this.rules = rules;
 	}
 
 	public MenuItem getAbout() {
@@ -234,8 +201,5 @@ public class topMenuBar extends MenuBar {
 	public void setColor4(MenuItem color4) {
 		this.color4 = color4;
 	}
-	
-	
-
 
 }
